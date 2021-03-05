@@ -15,7 +15,7 @@ from torch import nn
 from torch.serialization import default_restore_location
 import regex
 from transformers import AdamW
-from utils.lamb import Lamb
+from ance.utils.lamb import Lamb
 
 
 logger = logging.getLogger()

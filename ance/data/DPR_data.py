@@ -8,9 +8,9 @@ import random
 import numpy as np
 import torch
 from torch.utils.data import Dataset, TensorDataset
-from model.models import MSMarcoConfigDict, ALL_MODELS
+from ance.model.models import MSMarcoConfigDict, ALL_MODELS
 import csv
-from utils.util import multi_file_process, numbered_byte_file_generator, EmbeddingCache
+from ance.utils.util import multi_file_process, numbered_byte_file_generator, EmbeddingCache
 import pickle
 
 

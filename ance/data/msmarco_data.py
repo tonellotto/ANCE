@@ -4,9 +4,9 @@ import torch
 sys.path += ['../']
 import gzip
 import pickle
-from utils.util import pad_input_ids, multi_file_process, numbered_byte_file_generator, EmbeddingCache
+from ance.utils.util import pad_input_ids, multi_file_process, numbered_byte_file_generator, EmbeddingCache
 import csv
-from model.models import MSMarcoConfigDict, ALL_MODELS
+from ance.model.models import MSMarcoConfigDict, ALL_MODELS
 from torch.utils.data import DataLoader, Dataset, TensorDataset, IterableDataset, get_worker_info
 import numpy as np
 from os import listdir

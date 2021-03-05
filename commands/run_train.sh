@@ -70,7 +70,7 @@ model_dir="${base_data_dir}${job_name}/"
 model_ann_data_dir="${model_dir}ann_data/"
 
 preprocess_cmd="\
-python ../data/msmarco_data.py --data_dir $base_data_dir --out_data_dir $preprocessed_data_dir --model_type $model_type \
+python ../ance/data/msmarco_data.py --data_dir $base_data_dir --out_data_dir $preprocessed_data_dir --model_type $model_type \
 --model_name_or_path roberta-base --max_seq_length $seq_length --data_type $data_type\
 "
 
@@ -87,7 +87,7 @@ fi
 
 ##################################### Inital ANN Data generation ################################
 initial_data_gen_cmd="\
-python -m torch.distributed.launch --nproc_per_node=$gpu_no ../drivers/run_ann_data_gen.py --training_dir $model_dir \
+python -m torch.distributed.launch --nproc_per_node=$gpu_no ../ance/drivers/run_ann_data_gen.py --training_dir $model_dir \
 --init_model_dir $pretrained_checkpoint_dir --model_type $model_type --output_dir $model_ann_data_dir \
 --cache_dir "${model_ann_data_dir}cache/" --data_dir $preprocessed_data_dir --max_seq_length $seq_length \
 --per_gpu_eval_batch_size 16 --topk_training 200 --negative_sample 20 --end_output_num 0 \
@@ -106,7 +106,7 @@ fi
 
 ############################################# Training ########################################
 train_cmd="\
-python -m torch.distributed.launch --nproc_per_node=$gpu_no ../drivers/run_ann.py --model_type $model_type \
+python -m torch.distributed.launch --nproc_per_node=$gpu_no ../ance/drivers/run_ann.py --model_type $model_type \
 --model_name_or_path $pretrained_checkpoint_dir --task_name MSMarco --triplet --data_dir $preprocessed_data_dir \
 --ann_dir $model_ann_data_dir --max_seq_length $seq_length --per_gpu_train_batch_size=$per_gpu_train_batch_size \
 --gradient_accumulation_steps $gradient_accumulation_steps --learning_rate $learning_rate --output_dir $model_dir \

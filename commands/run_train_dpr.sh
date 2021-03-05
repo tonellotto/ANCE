@@ -19,7 +19,7 @@ model_ann_data_dir="${model_dir}ann_data/"
 pretrained_checkpoint_dir="../../../DPR/checkpoint/retriever/multiset/bert-base-encoder.cp"
 
 train_cmd="\
-sudo python -m torch.distributed.launch --nproc_per_node=$gpu_no ../drivers/run_ann_dpr.py --model_type $model_type \
+sudo python -m torch.distributed.launch --nproc_per_node=$gpu_no ../ance/drivers/run_ann_dpr.py --model_type $model_type \
 --model_name_or_path $pretrained_checkpoint_dir --task_name MSMarco $triplet --data_dir $base_data_dir \
 --ann_dir $model_ann_data_dir --max_seq_length $seq_length --per_gpu_train_batch_size=$batch_size \
 --gradient_accumulation_steps $gradient_accumulation_steps --learning_rate $learning_rate --output_dir $model_dir \

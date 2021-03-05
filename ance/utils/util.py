@@ -22,7 +22,7 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 from multiprocessing import Process
 from torch.utils.data import DataLoader, Dataset, TensorDataset, IterableDataset
 import re
-from model.models import MSMarcoConfigDict, ALL_MODELS
+from ance.model.models import MSMarcoConfigDict, ALL_MODELS
 from typing import List, Set, Dict, Tuple, Callable, Iterable, Any
 
 

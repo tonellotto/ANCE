@@ -1,15 +1,15 @@
 import sys
 sys.path += ["../"]
-from utils.msmarco_eval import quality_checks_qids, compute_metrics, load_reference
+from ance.utils.msmarco_eval import quality_checks_qids, compute_metrics, load_reference
 import torch.distributed as dist
 import gzip
 import faiss
 import numpy as np
-from data.process_fn import dual_process_fn
+from ance.data.process_fn import dual_process_fn
 from tqdm import tqdm
 import torch
 import os
-from utils.util import concat_key, is_first_worker, all_gather, StreamingDataset
+from ance.utils.util import concat_key, is_first_worker, all_gather, StreamingDataset
 from torch.utils.data import DataLoader
 
 

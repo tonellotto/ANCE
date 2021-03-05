@@ -57,7 +57,7 @@ The data preprocessing command is included as the first step in the training com
 ## Warmup for Training
 ANCE training starts from a pretrained BM25 warmup checkpoint. The command with our used parameters to train this warmup checkpoint is in commands/run_train_warmup.py and is shown below:
 
-        python3 -m torch.distributed.launch --nproc_per_node=1 ../drivers/run_warmup.py \
+        python3 -m torch.distributed.launch --nproc_per_node=1 ../ance/drivers/run_warmup.py \
         --train_model_type rdot_nll \
         --model_name_or_path roberta-base \
         --task_name MSMarco \
@@ -91,7 +91,7 @@ To train the model(s) in the paper, you need to start two commands in the follow
 
 	b. Initial ANN data generation: this step will use the pretrained BM25 warmup checkpoint to generate the initial training data. The command is as follow:
 
-        python -m torch.distributed.launch --nproc_per_node=$gpu_no ../drivers/run_ann_data_gen.py 
+        python -m torch.distributed.launch --nproc_per_node=$gpu_no ../ance/drivers/run_ann_data_gen.py 
         --training_dir {# checkpoint location, not used for initial data generation} \ 
         --init_model_dir {pretrained BM25 warmup checkpoint location} \ 
         --model_type rdot_nll \
@@ -106,7 +106,7 @@ To train the model(s) in the paper, you need to start two commands in the follow
 
 	c. Training: ANCE training with the most recently generated ANN data, the command is as follow:
 
-        python -m torch.distributed.launch --nproc_per_node=$gpu_no ../drivers/run_ann.py 
+        python -m torch.distributed.launch --nproc_per_node=$gpu_no ../ance/drivers/run_ann.py 
         --model_type rdot_nll \
         --model_name_or_path $pretrained_checkpoint_dir \
         --task_name MSMarco \

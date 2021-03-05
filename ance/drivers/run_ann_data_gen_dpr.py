@@ -15,8 +15,8 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 import torch.distributed as dist
 from torch import nn
-from model.models import MSMarcoConfigDict
-from utils.util import (
+from ance.model.models import MSMarcoConfigDict
+from ance.utils.util import (
     StreamingDataset, 
     EmbeddingCache, 
     get_checkpoint_no, 
@@ -24,8 +24,8 @@ from utils.util import (
     barrier_array_merge,
     is_first_worker,
 )
-from data.DPR_data import GetProcessingFn, load_mapping
-from utils.dpr_utils import load_states_from_checkpoint, get_model_obj, SimpleTokenizer, has_answer
+from ance.data.DPR_data import GetProcessingFn, load_mapping
+from ance.utils.dpr_utils import load_states_from_checkpoint, get_model_obj, SimpleTokenizer, has_answer
 import random 
 import transformers
 from transformers import (

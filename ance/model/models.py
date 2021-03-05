@@ -12,7 +12,7 @@ from transformers import (
     BertConfig
 )
 import torch.nn.functional as F
-from data.process_fn import triple_process_fn, triple2dual_process_fn
+from ance.data.process_fn import triple_process_fn, triple2dual_process_fn
 
 
 class EmbeddingMixin:

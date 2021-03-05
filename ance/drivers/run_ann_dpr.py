@@ -15,8 +15,8 @@ from tqdm import tqdm
 import torch.distributed as dist
 from torch import nn
 import torch.nn.functional as F
-from model.models import MSMarcoConfigDict, ALL_MODELS
-from utils.lamb import Lamb
+from ance.model.models import MSMarcoConfigDict, ALL_MODELS
+from ance.utils.lamb import Lamb
 import random 
 import transformers
 from transformers import (
@@ -36,7 +36,7 @@ except ImportError:
     from tensorboardX import SummaryWriter
 import pandas as pd
 logger = logging.getLogger(__name__)
-from utils.util import (
+from ance.utils.util import (
     StreamingDataset, 
     EmbeddingCache, 
     get_checkpoint_no, 
@@ -44,8 +44,8 @@ from utils.util import (
     set_seed,
     is_first_worker,
 )
-from data.DPR_data import GetTrainingDataProcessingFn, GetTripletTrainingDataProcessingFn
-from utils.dpr_utils import (
+from ance.data.DPR_data import GetTrainingDataProcessingFn, GetTripletTrainingDataProcessingFn
+from ance.utils.dpr_utils import (
     load_states_from_checkpoint, 
     get_model_obj, 
     CheckpointState, 

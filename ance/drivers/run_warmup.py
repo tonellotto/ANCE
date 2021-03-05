@@ -11,9 +11,9 @@ from transformers import (
     RobertaModel,
 )
 import transformers
-from utils.eval_mrr import passage_dist_eval
-from model.models import MSMarcoConfigDict
-from utils.lamb import Lamb
+from ance.utils.eval_mrr import passage_dist_eval
+from ance.model.models import MSMarcoConfigDict
+from ance.utils.lamb import Lamb
 import os
 from os import listdir
 from os.path import isfile, join
@@ -29,7 +29,7 @@ from tqdm import tqdm, trange
 import torch.distributed as dist
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch import nn
-from utils.util import getattr_recursive, set_seed, is_first_worker, StreamingDataset
+from ance.utils.util import getattr_recursive, set_seed, is_first_worker, StreamingDataset
 
 
 try:

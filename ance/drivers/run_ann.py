@@ -3,7 +3,7 @@ sys.path += ['../']
 import os
 import torch
 from data.msmarco_data import GetTrainingDataProcessingFn, GetTripletTrainingDataProcessingFn
-from utils.util import (
+from ance.utils.util import (
     getattr_recursive,
     set_seed,
     StreamingDataset,
@@ -22,8 +22,8 @@ from transformers import (
     get_linear_schedule_with_warmup
 )
 import transformers
-from utils.lamb import Lamb
-from model.models import MSMarcoConfigDict, ALL_MODELS
+from ance.utils.lamb import Lamb
+from ance.model.models import MSMarcoConfigDict, ALL_MODELS
 from torch import nn
 import torch.distributed as dist
 from tqdm import tqdm, trange

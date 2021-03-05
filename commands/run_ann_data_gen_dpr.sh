@@ -6,7 +6,7 @@ data_type=0 #0 is nq, 1 is trivia, 2 is both
 out_data_dir="../data/QA_NQ_data/" # change this for different data_type
 
 tokenization_cmd="\
-python ../data/DPR_data.py --wiki_dir $wiki_dir --question_dir $question_dir --data_type $data_type --answer_dir $ans_dir \
+python ../ance/data/DPR_data.py --wiki_dir $wiki_dir --question_dir $question_dir --data_type $data_type --answer_dir $ans_dir \
 --out_data_dir $out_data_dir \
 "
 
@@ -37,7 +37,7 @@ trivia_test_qa_path="../../../DPR/data/retriever/qas/"
 
 
 data_gen_cmd="\
-sudo python -m torch.distributed.launch --nproc_per_node=$gpu_no ../drivers/run_ann_data_gen_dpr.py --training_dir $model_dir \
+sudo python -m torch.distributed.launch --nproc_per_node=$gpu_no ../ance/drivers/run_ann_data_gen_dpr.py --training_dir $model_dir \
 --init_model_dir $pretrained_checkpoint_dir --model_type $model_type --output_dir $model_ann_data_dir \
 --cache_dir "${model_ann_data_dir}cache/" --data_dir $base_data_dir --max_seq_length $seq_length \
 --per_gpu_eval_batch_size $batch_size --topk_training $ann_topk --negative_sample $ann_negative_sample \

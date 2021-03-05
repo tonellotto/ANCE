@@ -3,7 +3,7 @@ sys.path += ['../']
 import torch
 import os
 import faiss
-from utils.util import (
+from ance.utils.util import (
     barrier_array_merge,
     convert_to_string_id,
     is_first_worker,
@@ -23,8 +23,8 @@ from transformers import (
     get_linear_schedule_with_warmup,
     RobertaModel,
 )
-from data.msmarco_data import GetProcessingFn  
-from model.models import MSMarcoConfigDict, ALL_MODELS
+from ance.data.msmarco_data import GetProcessingFn  
+from ance.model.models import MSMarcoConfigDict, ALL_MODELS
 from torch import nn
 import torch.distributed as dist
 from tqdm import tqdm, trange
