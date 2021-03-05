@@ -14,7 +14,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
     ],
-    packages=['ance'] + ['ance.' + i for i in find_packages('ance')],
+    packages=['ance', 'ance.data', 'ance.drivers', 'ance.model', 'ance.utils'],
     license="MIT",
     long_description=readme,
     install_requires=[
