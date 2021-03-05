@@ -14,7 +14,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
     ],
-    packages=['ANCE'] + ['ANCE.' + i for i in find_packages('ANCE')],
+    packages=['ance'] + ['ance.' + i for i in find_packages('ance')],
     license="MIT",
     long_description=readme,
     install_requires=[
