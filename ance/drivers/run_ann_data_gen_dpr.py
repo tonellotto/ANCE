@@ -148,6 +148,8 @@ def InferenceEmbeddingFromStreamDataLoader(args, model, train_dataloader, is_que
         dist.barrier()
     model.eval()
 
+    model = model.module if hasattr(model, "module") else model
+
     for batch in tqdm(train_dataloader, desc="Inferencing", disable=args.local_rank not in [-1, 0], position=0, leave=True):
         
         idxs = batch[3].detach().numpy() #[#B]
@@ -157,9 +159,11 @@ def InferenceEmbeddingFromStreamDataLoader(args, model, train_dataloader, is_que
         with torch.no_grad():
             inputs = {"input_ids": batch[0].long(), "attention_mask": batch[1].long()}
             if is_query_inference:
-                embs = model.module.query_emb(**inputs)
+                #embs = model.module.query_emb(**inputs)
+                embs = model.query_emb(**inputs)
             else:
-                embs = model.module.body_emb(**inputs)
+                #embs = model.module.body_emb(**inputs)
+                embs = model.body_emb(**inputs)
 
         embs = embs.detach().cpu().numpy()
 
