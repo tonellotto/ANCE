@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.md') as f:
     readme = f.read()
@@ -14,12 +14,14 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
     ],
+   packages=find_packages(),
    license="MIT",
    long_description=readme,
    install_requires=[
         'transformers==2.3.0', 
         'pytrec-eval',
-        'faiss-cpu',
-        'wget'
+        #'faiss-cpu',
+        'wget',
+        'torch'
     ],
 )
