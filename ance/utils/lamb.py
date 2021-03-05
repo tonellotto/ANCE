@@ -4,7 +4,10 @@ import collections
 import math
 
 import torch
-from tensorboardX import SummaryWriter
+try:
+    from torch.utils.tensorboard import SummaryWriter
+except ImportError:
+    from tensorboardX import SummaryWriter
 from torch.optim import Optimizer
 
 
