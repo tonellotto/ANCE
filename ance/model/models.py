@@ -252,7 +252,7 @@ class BiEncoder(nn.Module):
 # --------------------------------------------------
 ALL_MODELS = sum(
     (
-        tuple(conf.pretrained_config_archive_map.keys())
+        tuple(conf.ROBERTA_PRETRAINED_CONFIG_ARCHIVE_MAP.keys())
         for conf in (
             RobertaConfig,
         )
